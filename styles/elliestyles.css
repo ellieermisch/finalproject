@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #a7c4eb;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Makes sure footer goes to bottom if not enough content */
+}
+
+/* Container for main layout */
+.main-wrapper {
+    display: flex;
+    flex: 1; /* Take up all available height between header and footer */
+}
+
+/* Sidebar and main content */
+.leftmenu,
+.rightmenu {
+    width: 150px;
+    background-color: #a7c4eb;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.mainbody {
+    flex: 1;
+    background-color: #a7c4eb;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Header */
+.header {
+    background-color: #a7c4eb;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+    height: 100px;
+}
+
+/* Footer sticks to bottom if page is short */
+.footer {
+    background-color: #a7c4eb;
+    border-top: 1px solid black;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}

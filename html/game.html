@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <title>Wordle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .letter {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            margin: 5px;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid #ccc;
+            text-transform: uppercase;
+        }
+        .green { background-color: #6aaa64; color: white; }
+        .yellow { background-color: #c9b458; color: white; }
+        .grey { background-color: #787c7e; color: white; }
+        #result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+        <h1>Wordle Game</h1>
+    <p>Enter a 5-letter word:</p>
+    <input type="text" id="guess" maxlength="5">
+    <button onclick="checkGuess()">Submit</button>
+
+    <div id="result"></div>
+
+    <script>
+        const words = ["apple", "bread", "chair", "dance", "eagle", "flour", "grape", "house", "input", "jumps",
+                       "knife", "light", "money", "night", "ocean", "plant", "queen", "river", "stone", "table",
+                       "unity", "voice", "water", "youth", "zebra"];
+
+        const answer = words[Math.floor(Math.random() * words.length)].toLowerCase();
+
+        function checkGuess() {
+            const input = document.getElementById("guess").value.toLowerCase();
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            if (input.length !== 5) {
+                alert("Please enter exactly 5 letters.");
+                return;
+            }
+
+            for (let i = 0; i < 5; i++) {
+                const span = document.createElement("span");
+                span.classList.add("letter");
+                span.textContent = input[i];
+
+                if (input[i] === answer[i]) {
+                    span.classList.add("green");
+                } else if (answer.includes(input[i])) {
+                    span.classList.add("yellow");
+                } else {
+                    span.classList.add("grey");
+                }
+
+                resultDiv.appendChild(span);
+            }
+
+            // Optional: win message
+            if (input === answer) {
+                const winMsg = document.createElement("p");
+                winMsg.textContent = "🎉 Correct! You guessed the word!";
+                resultDiv.appendChild(winMsg);
+            }
+        }
+    </script>
+    
+</body>
+</html>
